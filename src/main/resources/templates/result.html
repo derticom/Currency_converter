@@ -1,0 +1,378 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Конвертер валют</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container py-5">
+
+    <h1 class="h2">Конвертер валют</h1>
+    <p>Конвертер валют онлайн — инструмент, который позволит вам рассчитать соотношения актуальных курсов денежных
+        средств всего мира, некоторых криптовалют и драгоценных металлов на текущий момент.</p>
+
+    <form method="post">
+
+        <div class="input-group mb-3">
+            <input type="number" name="initAmount" class="form-control" th:value="${initialAmount}">
+            <select name="initCurrency" class="form-select">
+                <option th:value="RUB" th:selected="${initCurrent == 'RUB'}">RUB - Российский рубль</option>
+                <option th:value="USD" th:selected="${initCurrent == 'USD'}">USD - Доллар США</option>
+                <option th:value="AED" th:selected="${initCurrent == 'AED'}">AED - Дирхам ОАЭ</option>
+                <option th:value="AFN" th:selected="${initCurrent == 'AFN'}">AFN - Афгани</option>
+                <option th:value="ALL" th:selected="${initCurrent == 'ALL'}">ALL - Албанский лек</option>
+                <option th:value="AMD" th:selected="${initCurrent == 'AMD'}">AMD - Армянский драм</option>
+                <option th:value="ANG" th:selected="${initCurrent == 'ANG'}">ANG - Нидерландский антильский гульден</option>
+                <option th:value="AOA" th:selected="${initCurrent == 'AOA'}">AOA - Ангольская кванза</option>
+                <option th:value="ARS" th:selected="${initCurrent == 'ARS'}">ARS - Аргентинское песо</option>
+                <option th:value="AUD" th:selected="${initCurrent == 'AUD'}">AUD - Австралийский доллар</option>
+                <option th:value="AWG" th:selected="${initCurrent == 'AWG'}">AWG - Арубанский флорин</option>
+                <option th:value="AZN" th:selected="${initCurrent == 'AZN'}">AZN - Азербайджанский манат</option>
+                <option th:value="BAM" th:selected="${initCurrent == 'BAM'}">BAM - Боснийская марка</option>
+                <option th:value="BBD" th:selected="${initCurrent == 'BBD'}">BBD - Барбадосский доллар</option>
+                <option th:value="BDT" th:selected="${initCurrent == 'BDT'}">BDT - Бангладешская така</option>
+                <option th:value="BGN" th:selected="${initCurrent == 'BGN'}">BGN - Болгарский лев</option>
+                <option th:value="BHD" th:selected="${initCurrent == 'BHD'}">BHD - Бахрейнский динар</option>
+                <option th:value="BIF" th:selected="${initCurrent == 'BIF'}">BIF - Бурундийский франк</option>
+                <option th:value="BMD" th:selected="${initCurrent == 'BMD'}">BMD - Бермудский доллар</option>
+                <option th:value="BND" th:selected="${initCurrent == 'BND'}">BND - Брунейский доллар</option>
+                <option th:value="BOB" th:selected="${initCurrent == 'BOB'}">BOB - Боливийский боливиано</option>
+                <option th:value="BRL" th:selected="${initCurrent == 'BRL'}">BRL - Бразильский реал</option>
+                <option th:value="BSD" th:selected="${initCurrent == 'BSD'}">BSD - Багамский доллар</option>
+                <option th:value="BTC" th:selected="${initCurrent == 'BTC'}">BTC - Биткойн</option>
+                <option th:value="BTN" th:selected="${initCurrent == 'BTN'}">BTN - Бутанский нгултрум</option>
+                <option th:value="BWP" th:selected="${initCurrent == 'BWP'}">BWP - Ботсванская пула</option>
+                <option th:value="BYN" th:selected="${initCurrent == 'BYN'}">BYN - Белорусский рубль</option>
+                <option th:value="BZD" th:selected="${initCurrent == 'BZD'}">BZD - Белизский доллар</option>
+                <option th:value="CAD" th:selected="${initCurrent == 'CAD'}">CAD - Канадский доллар</option>
+                <option th:value="CDF" th:selected="${initCurrent == 'CDF'}">CDF - Конголезский франк</option>
+                <option th:value="CHF" th:selected="${initCurrent == 'CHF'}">CHF - Швейцарский франк</option>
+                <option th:value="CLF" th:selected="${initCurrent == 'CLF'}">CLF - Чилийский учетная единица</option>
+                <option th:value="CLP" th:selected="${initCurrent == 'CLP'}">CLP - Чилийское песо</option>
+                <option th:value="CNH" th:selected="${initCurrent == 'CNH'}">CNH - Китайский юань (офшор)</option>
+                <option th:value="CNY" th:selected="${initCurrent == 'CNY'}">CNY - Китайский юань</option>
+                <option th:value="COP" th:selected="${initCurrent == 'COP'}">COP - Колумбийское песо</option>
+                <option th:value="CRC" th:selected="${initCurrent == 'CRC'}">CRC - Костариканский колон</option>
+                <option th:value="CUC" th:selected="${initCurrent == 'CUC'}">CUC - Кубинское конвертируемое песо</option>
+                <option th:value="CUP" th:selected="${initCurrent == 'CUP'}">CUP - Кубинское песо</option>
+                <option th:value="CVE" th:selected="${initCurrent == 'CVE'}">CVE - Кабо-Вердский эскудо</option>
+                <option th:value="CZK" th:selected="${initCurrent == 'CZK'}">CZK - Чешская крона</option>
+                <option th:value="DJF" th:selected="${initCurrent == 'DJF'}">DJF - Джибутийский франк</option>
+                <option th:value="DKK" th:selected="${initCurrent == 'DKK'}">DKK - Датская крона</option>
+                <option th:value="DOP" th:selected="${initCurrent == 'DOP'}">DOP - Доминиканское песо</option>
+                <option th:value="DZD" th:selected="${initCurrent == 'DZD'}">DZD - Алжирский динар</option>
+                <option th:value="EGP" th:selected="${initCurrent == 'EGP'}">EGP - Египетский фунт</option>
+                <option th:value="ERN" th:selected="${initCurrent == 'ERN'}">ERN - Эритрейская накфа</option>
+                <option th:value="ETB" th:selected="${initCurrent == 'ETB'}">ETB - Эфиопский быр</option>
+                <option th:value="EUR" th:selected="${initCurrent == 'EUR'}">EUR - Евро</option>
+                <option th:value="FJD" th:selected="${initCurrent == 'FJD'}">FJD - Фиджийский доллар</option>
+                <option th:value="FKP" th:selected="${initCurrent == 'FKP'}">FKP - Фунт Фолклендских островов</option>
+                <option th:value="GBP" th:selected="${initCurrent == 'GBP'}">GBP - Британский фунт стерлингов</option>
+                <option th:value="GEL" th:selected="${initCurrent == 'GEL'}">GEL - Грузинский лари</option>
+                <option th:value="GGP" th:selected="${initCurrent == 'GGP'}">GGP - Гернсийский фунт</option>
+                <option th:value="GHS" th:selected="${initCurrent == 'GHS'}">GHS - Ганский седи</option>
+                <option th:value="GIP" th:selected="${initCurrent == 'GIP'}">GIP - Гибралтарский фунт</option>
+                <option th:value="GMD" th:selected="${initCurrent == 'GMD'}">GMD - Гамбийский даласи</option>
+                <option th:value="GNF" th:selected="${initCurrent == 'GNF'}">GNF - Гвинейский франк</option>
+                <option th:value="GTQ" th:selected="${initCurrent == 'GTQ'}">GTQ - Гватемальский кетсаль</option>
+                <option th:value="GYD" th:selected="${initCurrent == 'GYD'}">GYD - Гайанский доллар</option>
+                <option th:value="HKD" th:selected="${initCurrent == 'HKD'}">HKD - Гонконгский доллар</option>
+                <option th:value="HNL" th:selected="${initCurrent == 'HNL'}">HNL - Гондурасская лемпира</option>
+                <option th:value="HRK" th:selected="${initCurrent == 'HRK'}">HRK - Хорватская куна</option>
+                <option th:value="HTG" th:selected="${initCurrent == 'HTG'}">HTG - Гаитянский гурд</option>
+                <option th:value="HUF" th:selected="${initCurrent == 'HUF'}">HUF - Венгерский форинт</option>
+                <option th:value="IDR" th:selected="${initCurrent == 'IDR'}">IDR - Индонезийская рупия</option>
+                <option th:value="ILS" th:selected="${initCurrent == 'ILS'}">ILS - Израильский новый шекель</option>
+                <option th:value="IMP" th:selected="${initCurrent == 'IMP'}">IMP - Мэнский фунт</option>
+                <option th:value="INR" th:selected="${initCurrent == 'INR'}">INR - Индийская рупия</option>
+                <option th:value="IQD" th:selected="${initCurrent == 'IQD'}">IQD - Иракский динар</option>
+                <option th:value="IRR" th:selected="${initCurrent == 'IRR'}">IRR - Иранский риал</option>
+                <option th:value="ISK" th:selected="${initCurrent == 'ISK'}">ISK - Исландская крона</option>
+                <option th:value="JEP" th:selected="${initCurrent == 'JEP'}">JEP - Джерсийский фунт</option>
+                <option th:value="JMD" th:selected="${initCurrent == 'JMD'}">JMD - Ямайский доллар</option>
+                <option th:value="JOD" th:selected="${initCurrent == 'JOD'}">JOD - Иорданский динар</option>
+                <option th:value="JPY" th:selected="${initCurrent == 'JPY'}">JPY - Японская йена</option>
+                <option th:value="KES" th:selected="${initCurrent == 'KES'}">KES - Кенийский шиллинг</option>
+                <option th:value="KGS" th:selected="${initCurrent == 'KGS'}">KGS - Киргизский сом</option>
+                <option th:value="KHR" th:selected="${initCurrent == 'KHR'}">KHR - Камбоджийский риель</option>
+                <option th:value="KMF" th:selected="${initCurrent == 'KMF'}">KMF - Коморский франк</option>
+                <option th:value="KPW" th:selected="${initCurrent == 'KPW'}">KPW - Северокорейская вона</option>
+                <option th:value="KRW" th:selected="${initCurrent == 'KRW'}">KRW - Южнокорейская вона</option>
+                <option th:value="KWD" th:selected="${initCurrent == 'KWD'}">KWD - Кувейтский динар</option>
+                <option th:value="KYD" th:selected="${initCurrent == 'KYD'}">KYD - Каймановский доллар</option>
+                <option th:value="KZT" th:selected="${initCurrent == 'KZT'}">KZT - Казахстанский тенге</option>
+                <option th:value="LAK" th:selected="${initCurrent == 'LAK'}">LAK - Лаосский кип</option>
+                <option th:value="LBP" th:selected="${initCurrent == 'LBP'}">LBP - Ливанский фунт</option>
+                <option th:value="LKR" th:selected="${initCurrent == 'LKR'}">LKR - Шри-ланкийская рупия</option>
+                <option th:value="LRD" th:selected="${initCurrent == 'LRD'}">LRD - Либерийский доллар</option>
+                <option th:value="LSL" th:selected="${initCurrent == 'LSL'}">LSL - Лесотский лоти</option>
+                <option th:value="LYD" th:selected="${initCurrent == 'LYD'}">LYD - Ливийский динар</option>
+                <option th:value="MAD" th:selected="${initCurrent == 'MAD'}">MAD - Марокканский дирхам</option>
+                <option th:value="MDL" th:selected="${initCurrent == 'MDL'}">MDL - Молдавский лей</option>
+                <option th:value="MGA" th:selected="${initCurrent == 'MGA'}">MGA - Малагасийский ариари</option>
+                <option th:value="MKD" th:selected="${initCurrent == 'MKD'}">MKD - Македонский денар</option>
+                <option th:value="MMK" th:selected="${initCurrent == 'MMK'}">MMK - Мьянманский кьят</option>
+                <option th:value="MNT" th:selected="${initCurrent == 'MNT'}">MNT - Монгольский тугрик</option>
+                <option th:value="MOP" th:selected="${initCurrent == 'MOP'}">MOP - Патака Макао</option>
+                <option th:value="MRU" th:selected="${initCurrent == 'MRU'}">MRU - Мавританская угия</option>
+                <option th:value="MUR" th:selected="${initCurrent == 'MUR'}">MUR - Маврикийская рупия</option>
+                <option th:value="MVR" th:selected="${initCurrent == 'MVR'}">MVR - Мальдивская руфия</option>
+                <option th:value="MWK" th:selected="${initCurrent == 'MWK'}">MWK - Малавийская квача</option>
+                <option th:value="MXN" th:selected="${initCurrent == 'MXN'}">MXN - Мексиканское песо</option>
+                <option th:value="MYR" th:selected="${initCurrent == 'MYR'}">MYR - Малайзийский ринггит</option>
+                <option th:value="MZN" th:selected="${initCurrent == 'MZN'}">MZN - Мозамбикский метикал</option>
+                <option th:value="NAD" th:selected="${initCurrent == 'NAD'}">NAD - Намибийский доллар</option>
+                <option th:value="NGN" th:selected="${initCurrent == 'NGN'}">NGN - Нигерийская найра</option>
+                <option th:value="NIO" th:selected="${initCurrent == 'NIO'}">NIO - Никарагуанская кордоба</option>
+                <option th:value="NOK" th:selected="${initCurrent == 'NOK'}">NOK - Норвежская крона</option>
+                <option th:value="NPR" th:selected="${initCurrent == 'NPR'}">NPR - Непальская рупия</option>
+                <option th:value="NZD" th:selected="${initCurrent == 'NZD'}">NZD - Новозеландский доллар</option>
+                <option th:value="OMR" th:selected="${initCurrent == 'OMR'}">OMR - Оманский риал</option>
+                <option th:value="PAB" th:selected="${initCurrent == 'PAB'}">PAB - Панамская бальбоа</option>
+                <option th:value="PEN" th:selected="${initCurrent == 'PEN'}">PEN - Перуанский соль</option>
+                <option th:value="PGK" th:selected="${initCurrent == 'PGK'}">PGK - Кина Папуа-Новой Гвинеи</option>
+                <option th:value="PHP" th:selected="${initCurrent == 'PHP'}">PHP - Филиппинское песо</option>
+                <option th:value="PKR" th:selected="${initCurrent == 'PKR'}">PKR - Пакистанская рупия</option>
+                <option th:value="PLN" th:selected="${initCurrent == 'PLN'}">PLN - Польский злотый</option>
+                <option th:value="PYG" th:selected="${initCurrent == 'PYG'}">PYG - Парагвайский гуарани</option>
+                <option th:value="QAR" th:selected="${initCurrent == 'QAR'}">QAR - Катарский риал</option>
+                <option th:value="RON" th:selected="${initCurrent == 'RON'}">RON - Румынский лей</option>
+                <option th:value="RSD" th:selected="${initCurrent == 'RSD'}">RSD - Сербский динар</option>
+                <option th:value="RWF" th:selected="${initCurrent == 'RWF'}">RWF - Руандский франк</option>
+                <option th:value="SAR" th:selected="${initCurrent == 'SAR'}">SAR - Саудовский риял</option>
+                <option th:value="SBD" th:selected="${initCurrent == 'SBD'}">SBD - Соломоновский доллар</option>
+                <option th:value="SCR" th:selected="${initCurrent == 'SCR'}">SCR - Сейшельская рупия</option>
+                <option th:value="SDG" th:selected="${initCurrent == 'SDG'}">SDG - Суданский фунт</option>
+                <option th:value="SEK" th:selected="${initCurrent == 'SEK'}">SEK - Шведская крона</option>
+                <option th:value="SGD" th:selected="${initCurrent == 'SGD'}">SGD - Сингапурский доллар</option>
+                <option th:value="SHP" th:selected="${initCurrent == 'SHP'}">SHP - Фунт острова Святой Елены</option>
+                <option th:value="SLL" th:selected="${initCurrent == 'SLL'}">SLL - Сьерра-леонский леоне</option>
+                <option th:value="SOS" th:selected="${initCurrent == 'SOS'}">SOS - Сомалийский шиллинг</option>
+                <option th:value="SRD" th:selected="${initCurrent == 'SRD'}">SRD - Суринамский доллар</option>
+                <option th:value="SSP" th:selected="${initCurrent == 'SSP'}">SSP - Южносуданский фунт</option>
+                <option th:value="STN" th:selected="${initCurrent == 'STN'}">STN - Сан-Томе и Принсипи двоба</option>
+                <option th:value="SVC" th:selected="${initCurrent == 'SVC'}">SVC - Сальвадорский колон</option>
+                <option th:value="SYP" th:selected="${initCurrent == 'SYP'}">SYP - Сирийский фунт</option>
+                <option th:value="SZL" th:selected="${initCurrent == 'SZL'}">SZL - Свазилендский лилангени</option>
+                <option th:value="THB" th:selected="${initCurrent == 'THB'}">THB - Тайский бат</option>
+                <option th:value="TJS" th:selected="${initCurrent == 'TJS'}">TJS - Таджикский сомони</option>
+                <option th:value="TMT" th:selected="${initCurrent == 'TMT'}">TMT - Туркменский манат</option>
+                <option th:value="TND" th:selected="${initCurrent == 'TND'}">TND - Тунисский динар</option>
+                <option th:value="TOP" th:selected="${initCurrent == 'TOP'}">TOP - Тонганская паанга</option>
+                <option th:value="TRY" th:selected="${initCurrent == 'TRY'}">TRY - Турецкая лира</option>
+                <option th:value="TTD" th:selected="${initCurrent == 'TTD'}">TTD - Доллар Тринидада и Тобаго</option>
+                <option th:value="TWD" th:selected="${initCurrent == 'TWD'}">TWD - Новый тайваньский доллар</option>
+                <option th:value="TZS" th:selected="${initCurrent == 'TZS'}">TZS - Танзанийский шиллинг</option>
+                <option th:value="UAH" th:selected="${initCurrent == 'UAH'}">UAH - Украинская гривна</option>
+                <option th:value="UGX" th:selected="${initCurrent == 'UGX'}">UGX - Угандийский шиллинг</option>
+                <option th:value="UYU" th:selected="${initCurrent == 'UYU'}">UYU - Уругвайское песо</option>
+                <option th:value="UZS" th:selected="${initCurrent == 'UZS'}">UZS - Узбекский сум</option>
+                <option th:value="VES" th:selected="${initCurrent == 'VES'}">VES - Венесуэльский боливар</option>
+                <option th:value="VND" th:selected="${initCurrent == 'VND'}">VND - Вьетнамский донг</option>
+                <option th:value="VUV" th:selected="${initCurrent == 'VUV'}">VUV - Вануатский вату</option>
+                <option th:value="WST" th:selected="${initCurrent == 'WST'}">WST - Самоанская тала</option>
+                <option th:value="XAF" th:selected="${initCurrent == 'XAF'}">XAF - Центральноафриканский франк</option>
+                <option th:value="XAG" th:selected="${initCurrent == 'XAG'}">XAG - Серебро (унция)</option>
+                <option th:value="XAU" th:selected="${initCurrent == 'XAU'}">XAU - Золото (унция)</option>
+                <option th:value="XCD" th:selected="${initCurrent == 'XCD'}">XCD - Восточно-карибский доллар</option>
+                <option th:value="XDR" th:selected="${initCurrent == 'XDR'}">XDR - Специальные права заимствования</option>
+                <option th:value="XOF" th:selected="${initCurrent == 'XOF'}">XOF - Западноафриканский франк</option>
+                <option th:value="XPD" th:selected="${initCurrent == 'XPD'}">XPD - Палладий (унция)</option>
+                <option th:value="XPF" th:selected="${initCurrent == 'XPF'}">XPF - Франк КФП</option>
+                <option th:value="XPT" th:selected="${initCurrent == 'XPT'}">XPT - Платина (унция)</option>
+                <option th:value="YER" th:selected="${initCurrent == 'YER'}">YER - Йеменский риал</option>
+                <option th:value="ZAR" th:selected="${initCurrent == 'ZAR'}">ZAR - Южноафриканский рэнд</option>
+                <option th:value="ZMW" th:selected="${initCurrent == 'ZMW'}">ZMW - Замбийская квача</option>
+                <option th:value="ZWL" th:selected="${initCurrent == 'ZWL'}">ZWL - Зимбабвийский доллар</option>
+            </select>
+
+            <span class="input-group-text"> &rarr; </span>
+
+            <input fieldset disabled type="number" class="form-control" th:value="${convertedAmount}">
+            <select name="destCurrency" class="form-select" aria-label="Default select example">
+                <option th:value="USD" th:selected="${destCurrent == 'USD'}">USD - Доллар США</option>
+                <option th:value="RUB" th:selected="${destCurrent == 'RUB'}">RUB - Российский рубль</option>
+                <option th:value="AED" th:selected="${destCurrent == 'AED'}">AED - Дирхам ОАЭ</option>
+                <option th:value="AFN" th:selected="${destCurrent == 'AFN'}">AFN - Афгани</option>
+                <option th:value="ALL" th:selected="${destCurrent == 'ALL'}">ALL - Албанский лек</option>
+                <option th:value="AMD" th:selected="${destCurrent == 'AMD'}">AMD - Армянский драм</option>
+                <option th:value="ANG" th:selected="${destCurrent == 'ANG'}">ANG - Нидерландский антильский гульден</option>
+                <option th:value="AOA" th:selected="${destCurrent == 'AOA'}">AOA - Ангольская кванза</option>
+                <option th:value="ARS" th:selected="${destCurrent == 'ARS'}">ARS - Аргентинское песо</option>
+                <option th:value="AUD" th:selected="${destCurrent == 'AUD'}">AUD - Австралийский доллар</option>
+                <option th:value="AWG" th:selected="${destCurrent == 'AWG'}">AWG - Арубанский флорин</option>
+                <option th:value="AZN" th:selected="${destCurrent == 'AZN'}">AZN - Азербайджанский манат</option>
+                <option th:value="BAM" th:selected="${destCurrent == 'BAM'}">BAM - Боснийская марка</option>
+                <option th:value="BBD" th:selected="${destCurrent == 'BBD'}">BBD - Барбадосский доллар</option>
+                <option th:value="BDT" th:selected="${destCurrent == 'BDT'}">BDT - Бангладешская така</option>
+                <option th:value="BGN" th:selected="${destCurrent == 'BGN'}">BGN - Болгарский лев</option>
+                <option th:value="BHD" th:selected="${destCurrent == 'BHD'}">BHD - Бахрейнский динар</option>
+                <option th:value="BIF" th:selected="${destCurrent == 'BIF'}">BIF - Бурундийский франк</option>
+                <option th:value="BMD" th:selected="${destCurrent == 'BMD'}">BMD - Бермудский доллар</option>
+                <option th:value="BND" th:selected="${destCurrent == 'BND'}">BND - Брунейский доллар</option>
+                <option th:value="BOB" th:selected="${destCurrent == 'BOB'}">BOB - Боливийский боливиано</option>
+                <option th:value="BRL" th:selected="${destCurrent == 'BRL'}">BRL - Бразильский реал</option>
+                <option th:value="BSD" th:selected="${destCurrent == 'BSD'}">BSD - Багамский доллар</option>
+                <option th:value="BTC" th:selected="${destCurrent == 'BTC'}">BTC - Биткойн</option>
+                <option th:value="BTN" th:selected="${destCurrent == 'BTN'}">BTN - Бутанский нгултрум</option>
+                <option th:value="BWP" th:selected="${destCurrent == 'BWP'}">BWP - Ботсванская пула</option>
+                <option th:value="BYN" th:selected="${destCurrent == 'BYN'}">BYN - Белорусский рубль</option>
+                <option th:value="BZD" th:selected="${destCurrent == 'BZD'}">BZD - Белизский доллар</option>
+                <option th:value="CAD" th:selected="${destCurrent == 'CAD'}">CAD - Канадский доллар</option>
+                <option th:value="CDF" th:selected="${destCurrent == 'CDF'}">CDF - Конголезский франк</option>
+                <option th:value="CHF" th:selected="${destCurrent == 'CHF'}">CHF - Швейцарский франк</option>
+                <option th:value="CLF" th:selected="${destCurrent == 'CLF'}">CLF - Чилийский учетная единица</option>
+                <option th:value="CLP" th:selected="${destCurrent == 'CLP'}">CLP - Чилийское песо</option>
+                <option th:value="CNH" th:selected="${destCurrent == 'CNH'}">CNH - Китайский юань (офшор)</option>
+                <option th:value="CNY" th:selected="${destCurrent == 'CNY'}">CNY - Китайский юань</option>
+                <option th:value="COP" th:selected="${destCurrent == 'COP'}">COP - Колумбийское песо</option>
+                <option th:value="CRC" th:selected="${destCurrent == 'CRC'}">CRC - Костариканский колон</option>
+                <option th:value="CUC" th:selected="${destCurrent == 'CUC'}">CUC - Кубинское конвертируемое песо</option>
+                <option th:value="CUP" th:selected="${destCurrent == 'CUP'}">CUP - Кубинское песо</option>
+                <option th:value="CVE" th:selected="${destCurrent == 'CVE'}">CVE - Кабо-Вердский эскудо</option>
+                <option th:value="CZK" th:selected="${destCurrent == 'CZK'}">CZK - Чешская крона</option>
+                <option th:value="DJF" th:selected="${destCurrent == 'DJF'}">DJF - Джибутийский франк</option>
+                <option th:value="DKK" th:selected="${destCurrent == 'DKK'}">DKK - Датская крона</option>
+                <option th:value="DOP" th:selected="${destCurrent == 'DOP'}">DOP - Доминиканское песо</option>
+                <option th:value="DZD" th:selected="${destCurrent == 'DZD'}">DZD - Алжирский динар</option>
+                <option th:value="EGP" th:selected="${destCurrent == 'EGP'}">EGP - Египетский фунт</option>
+                <option th:value="ERN" th:selected="${destCurrent == 'ERN'}">ERN - Эритрейская накфа</option>
+                <option th:value="ETB" th:selected="${destCurrent == 'ETB'}">ETB - Эфиопский быр</option>
+                <option th:value="EUR" th:selected="${destCurrent == 'EUR'}">EUR - Евро</option>
+                <option th:value="FJD" th:selected="${destCurrent == 'FJD'}">FJD - Фиджийский доллар</option>
+                <option th:value="FKP" th:selected="${destCurrent == 'FKP'}">FKP - Фунт Фолклендских островов</option>
+                <option th:value="GBP" th:selected="${destCurrent == 'GBP'}">GBP - Британский фунт стерлингов</option>
+                <option th:value="GEL" th:selected="${destCurrent == 'GEL'}">GEL - Грузинский лари</option>
+                <option th:value="GGP" th:selected="${destCurrent == 'GGP'}">GGP - Гернсийский фунт</option>
+                <option th:value="GHS" th:selected="${destCurrent == 'GHS'}">GHS - Ганский седи</option>
+                <option th:value="GIP" th:selected="${destCurrent == 'GIP'}">GIP - Гибралтарский фунт</option>
+                <option th:value="GMD" th:selected="${destCurrent == 'GMD'}">GMD - Гамбийский даласи</option>
+                <option th:value="GNF" th:selected="${destCurrent == 'GNF'}">GNF - Гвинейский франк</option>
+                <option th:value="GTQ" th:selected="${destCurrent == 'GTQ'}">GTQ - Гватемальский кетсаль</option>
+                <option th:value="GYD" th:selected="${destCurrent == 'GYD'}">GYD - Гайанский доллар</option>
+                <option th:value="HKD" th:selected="${destCurrent == 'HKD'}">HKD - Гонконгский доллар</option>
+                <option th:value="HNL" th:selected="${destCurrent == 'HNL'}">HNL - Гондурасская лемпира</option>
+                <option th:value="HRK" th:selected="${destCurrent == 'HRK'}">HRK - Хорватская куна</option>
+                <option th:value="HTG" th:selected="${destCurrent == 'HTG'}">HTG - Гаитянский гурд</option>
+                <option th:value="HUF" th:selected="${destCurrent == 'HUF'}">HUF - Венгерский форинт</option>
+                <option th:value="IDR" th:selected="${destCurrent == 'IDR'}">IDR - Индонезийская рупия</option>
+                <option th:value="ILS" th:selected="${destCurrent == 'ILS'}">ILS - Израильский новый шекель</option>
+                <option th:value="IMP" th:selected="${destCurrent == 'IMP'}">IMP - Мэнский фунт</option>
+                <option th:value="INR" th:selected="${destCurrent == 'INR'}">INR - Индийская рупия</option>
+                <option th:value="IQD" th:selected="${destCurrent == 'IQD'}">IQD - Иракский динар</option>
+                <option th:value="IRR" th:selected="${destCurrent == 'IRR'}">IRR - Иранский риал</option>
+                <option th:value="ISK" th:selected="${destCurrent == 'ISK'}">ISK - Исландская крона</option>
+                <option th:value="JEP" th:selected="${destCurrent == 'JEP'}">JEP - Джерсийский фунт</option>
+                <option th:value="JMD" th:selected="${destCurrent == 'JMD'}">JMD - Ямайский доллар</option>
+                <option th:value="JOD" th:selected="${destCurrent == 'JOD'}">JOD - Иорданский динар</option>
+                <option th:value="JPY" th:selected="${destCurrent == 'JPY'}">JPY - Японская йена</option>
+                <option th:value="KES" th:selected="${destCurrent == 'KES'}">KES - Кенийский шиллинг</option>
+                <option th:value="KGS" th:selected="${destCurrent == 'KGS'}">KGS - Киргизский сом</option>
+                <option th:value="KHR" th:selected="${destCurrent == 'KHR'}">KHR - Камбоджийский риель</option>
+                <option th:value="KMF" th:selected="${destCurrent == 'KMF'}">KMF - Коморский франк</option>
+                <option th:value="KPW" th:selected="${destCurrent == 'KPW'}">KPW - Северокорейская вона</option>
+                <option th:value="KRW" th:selected="${destCurrent == 'KRW'}">KRW - Южнокорейская вона</option>
+                <option th:value="KWD" th:selected="${destCurrent == 'KWD'}">KWD - Кувейтский динар</option>
+                <option th:value="KYD" th:selected="${destCurrent == 'KYD'}">KYD - Каймановский доллар</option>
+                <option th:value="KZT" th:selected="${destCurrent == 'KZT'}">KZT - Казахстанский тенге</option>
+                <option th:value="LAK" th:selected="${destCurrent == 'LAK'}">LAK - Лаосский кип</option>
+                <option th:value="LBP" th:selected="${destCurrent == 'LBP'}">LBP - Ливанский фунт</option>
+                <option th:value="LKR" th:selected="${destCurrent == 'LKR'}">LKR - Шри-ланкийская рупия</option>
+                <option th:value="LRD" th:selected="${destCurrent == 'LRD'}">LRD - Либерийский доллар</option>
+                <option th:value="LSL" th:selected="${destCurrent == 'LSL'}">LSL - Лесотский лоти</option>
+                <option th:value="LYD" th:selected="${destCurrent == 'LYD'}">LYD - Ливийский динар</option>
+                <option th:value="MAD" th:selected="${destCurrent == 'MAD'}">MAD - Марокканский дирхам</option>
+                <option th:value="MDL" th:selected="${destCurrent == 'MDL'}">MDL - Молдавский лей</option>
+                <option th:value="MGA" th:selected="${destCurrent == 'MGA'}">MGA - Малагасийский ариари</option>
+                <option th:value="MKD" th:selected="${destCurrent == 'MKD'}">MKD - Македонский денар</option>
+                <option th:value="MMK" th:selected="${destCurrent == 'MMK'}">MMK - Мьянманский кьят</option>
+                <option th:value="MNT" th:selected="${destCurrent == 'MNT'}">MNT - Монгольский тугрик</option>
+                <option th:value="MOP" th:selected="${destCurrent == 'MOP'}">MOP - Патака Макао</option>
+                <option th:value="MRU" th:selected="${destCurrent == 'MRU'}">MRU - Мавританская угия</option>
+                <option th:value="MUR" th:selected="${destCurrent == 'MUR'}">MUR - Маврикийская рупия</option>
+                <option th:value="MVR" th:selected="${destCurrent == 'MVR'}">MVR - Мальдивская руфия</option>
+                <option th:value="MWK" th:selected="${destCurrent == 'MWK'}">MWK - Малавийская квача</option>
+                <option th:value="MXN" th:selected="${destCurrent == 'MXN'}">MXN - Мексиканское песо</option>
+                <option th:value="MYR" th:selected="${destCurrent == 'MYR'}">MYR - Малайзийский ринггит</option>
+                <option th:value="MZN" th:selected="${destCurrent == 'MZN'}">MZN - Мозамбикский метикал</option>
+                <option th:value="NAD" th:selected="${destCurrent == 'NAD'}">NAD - Намибийский доллар</option>
+                <option th:value="NGN" th:selected="${destCurrent == 'NGN'}">NGN - Нигерийская найра</option>
+                <option th:value="NIO" th:selected="${destCurrent == 'NIO'}">NIO - Никарагуанская кордоба</option>
+                <option th:value="NOK" th:selected="${destCurrent == 'NOK'}">NOK - Норвежская крона</option>
+                <option th:value="NPR" th:selected="${destCurrent == 'NPR'}">NPR - Непальская рупия</option>
+                <option th:value="NZD" th:selected="${destCurrent == 'NZD'}">NZD - Новозеландский доллар</option>
+                <option th:value="OMR" th:selected="${destCurrent == 'OMR'}">OMR - Оманский риал</option>
+                <option th:value="PAB" th:selected="${destCurrent == 'PAB'}">PAB - Панамская бальбоа</option>
+                <option th:value="PEN" th:selected="${destCurrent == 'PEN'}">PEN - Перуанский соль</option>
+                <option th:value="PGK" th:selected="${destCurrent == 'PGK'}">PGK - Кина Папуа-Новой Гвинеи</option>
+                <option th:value="PHP" th:selected="${destCurrent == 'PHP'}">PHP - Филиппинское песо</option>
+                <option th:value="PKR" th:selected="${destCurrent == 'PKR'}">PKR - Пакистанская рупия</option>
+                <option th:value="PLN" th:selected="${destCurrent == 'PLN'}">PLN - Польский злотый</option>
+                <option th:value="PYG" th:selected="${destCurrent == 'PYG'}">PYG - Парагвайский гуарани</option>
+                <option th:value="QAR" th:selected="${destCurrent == 'QAR'}">QAR - Катарский риал</option>
+                <option th:value="RON" th:selected="${destCurrent == 'RON'}">RON - Румынский лей</option>
+                <option th:value="RSD" th:selected="${destCurrent == 'RSD'}">RSD - Сербский динар</option>
+                <option th:value="RWF" th:selected="${destCurrent == 'RWF'}">RWF - Руандский франк</option>
+                <option th:value="SAR" th:selected="${destCurrent == 'SAR'}">SAR - Саудовский риял</option>
+                <option th:value="SBD" th:selected="${destCurrent == 'SBD'}">SBD - Соломоновский доллар</option>
+                <option th:value="SCR" th:selected="${destCurrent == 'SCR'}">SCR - Сейшельская рупия</option>
+                <option th:value="SDG" th:selected="${destCurrent == 'SDG'}">SDG - Суданский фунт</option>
+                <option th:value="SEK" th:selected="${destCurrent == 'SEK'}">SEK - Шведская крона</option>
+                <option th:value="SGD" th:selected="${destCurrent == 'SGD'}">SGD - Сингапурский доллар</option>
+                <option th:value="SHP" th:selected="${destCurrent == 'SHP'}">SHP - Фунт острова Святой Елены</option>
+                <option th:value="SLL" th:selected="${destCurrent == 'SLL'}">SLL - Сьерра-леонский леоне</option>
+                <option th:value="SOS" th:selected="${destCurrent == 'SOS'}">SOS - Сомалийский шиллинг</option>
+                <option th:value="SRD" th:selected="${destCurrent == 'SRD'}">SRD - Суринамский доллар</option>
+                <option th:value="SSP" th:selected="${destCurrent == 'SSP'}">SSP - Южносуданский фунт</option>
+                <option th:value="STN" th:selected="${destCurrent == 'STN'}">STN - Сан-Томе и Принсипи двоба</option>
+                <option th:value="SVC" th:selected="${destCurrent == 'SVC'}">SVC - Сальвадорский колон</option>
+                <option th:value="SYP" th:selected="${destCurrent == 'SYP'}">SYP - Сирийский фунт</option>
+                <option th:value="SZL" th:selected="${destCurrent == 'SZL'}">SZL - Свазилендский лилангени</option>
+                <option th:value="THB" th:selected="${destCurrent == 'THB'}">THB - Тайский бат</option>
+                <option th:value="TJS" th:selected="${destCurrent == 'TJS'}">TJS - Таджикский сомони</option>
+                <option th:value="TMT" th:selected="${destCurrent == 'TMT'}">TMT - Туркменский манат</option>
+                <option th:value="TND" th:selected="${destCurrent == 'TND'}">TND - Тунисский динар</option>
+                <option th:value="TOP" th:selected="${destCurrent == 'TOP'}">TOP - Тонганская паанга</option>
+                <option th:value="TRY" th:selected="${destCurrent == 'TRY'}">TRY - Турецкая лира</option>
+                <option th:value="TTD" th:selected="${destCurrent == 'TTD'}">TTD - Доллар Тринидада и Тобаго</option>
+                <option th:value="TWD" th:selected="${destCurrent == 'TWD'}">TWD - Новый тайваньский доллар</option>
+                <option th:value="TZS" th:selected="${destCurrent == 'TZS'}">TZS - Танзанийский шиллинг</option>
+                <option th:value="UAH" th:selected="${destCurrent == 'UAH'}">UAH - Украинская гривна</option>
+                <option th:value="UGX" th:selected="${destCurrent == 'UGX'}">UGX - Угандийский шиллинг</option>
+                <option th:value="UYU" th:selected="${destCurrent == 'UYU'}">UYU - Уругвайское песо</option>
+                <option th:value="UZS" th:selected="${destCurrent == 'UZS'}">UZS - Узбекский сум</option>
+                <option th:value="VES" th:selected="${destCurrent == 'VES'}">VES - Венесуэльский боливар</option>
+                <option th:value="VND" th:selected="${destCurrent == 'VND'}">VND - Вьетнамский донг</option>
+                <option th:value="VUV" th:selected="${destCurrent == 'VUV'}">VUV - Вануатский вату</option>
+                <option th:value="WST" th:selected="${destCurrent == 'WST'}">WST - Самоанская тала</option>
+                <option th:value="XAF" th:selected="${destCurrent == 'XAF'}">XAF - Центральноафриканский франк</option>
+                <option th:value="XAG" th:selected="${destCurrent == 'XAG'}">XAG - Серебро (унция)</option>
+                <option th:value="XAU" th:selected="${destCurrent == 'XAU'}">XAU - Золото (унция)</option>
+                <option th:value="XCD" th:selected="${destCurrent == 'XCD'}">XCD - Восточно-карибский доллар</option>
+                <option th:value="XDR" th:selected="${destCurrent == 'XDR'}">XDR - Специальные права заимствования</option>
+                <option th:value="XOF" th:selected="${destCurrent == 'XOF'}">XOF - Западноафриканский франк</option>
+                <option th:value="XPD" th:selected="${destCurrent == 'XPD'}">XPD - Палладий (унция)</option>
+                <option th:value="XPF" th:selected="${destCurrent == 'XPF'}">XPF - Франк КФП</option>
+                <option th:value="XPT" th:selected="${destCurrent == 'XPT'}">XPT - Платина (унция)</option>
+                <option th:value="YER" th:selected="${destCurrent == 'YER'}">YER - Йеменский риал</option>
+                <option th:value="ZAR" th:selected="${destCurrent == 'ZAR'}">ZAR - Южноафриканский рэнд</option>
+                <option th:value="ZMW" th:selected="${destCurrent == 'ZMW'}">ZMW - Замбийская квача</option>
+                <option th:value="ZWL" th:selected="${destCurrent == 'ZWL'}">ZWL - Зимбабвийский доллар</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Конвертировать</button>
+        </div>
+
+    </form>
+
+    <p th:attr="value=${dateAndTime}" th:text="'Данные за ' + ${dateAndTime}"></p>
+    <p>Источник - apilayer.com</p>
+
+</div>
+
+</body>
+</html>
